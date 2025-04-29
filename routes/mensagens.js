@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
     });
 });
 
-// READ - ALL (Listar todas as mensagens)
+// Listar todas as mensagens
 router.get('/', (req, res) => {
     db.all("SELECT * FROM mensagens", (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
