@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database/db');
 
-// CREATE
+// Criar mensagens
 router.post('/', (req, res) => {
     const { conteudo } = req.body;
     db.run("INSERT INTO mensagens (conteudo) VALUES (?)", [conteudo], function (err) {
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// READ - ONE (Pegar uma mensagem por ID)
+// Pegar uma mensagem por ID
 router.get('/:id', (req, res) => {
     const id = req.params.id;
     db.get("SELECT * FROM mensagens WHERE id = ?", [id], (err, row) => {
@@ -29,7 +29,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// UPDATE
+// Mudar mensagens insanas
 router.put('/:id', (req, res) => {
     const id = req.params.id;
     const { conteudo } = req.body;
@@ -40,7 +40,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// DELETE
+// Deletar
 router.delete('/:id', (req, res) => {
     const id = req.params.id;
     db.run("DELETE FROM mensagens WHERE id = ?", [id], function (err) {
